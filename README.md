@@ -1,5 +1,7 @@
 # Open Kanban
 
+[Buy me a coffee](https://www.buymeacoffee.com/hamsterbase)
+
 You only need to add a `Public` label to the Issue in Linear, and it will automatically synchronize to Open Kanban.
 
 ## How To Use
