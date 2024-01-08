@@ -67,6 +67,11 @@ export const getLinearIssues = async (options: GetLinerIssueOptions) => {
           nin: projectIds,
         },
       },
+      labels: {
+        id: {
+          in: [labelId],
+        },
+      },
     },
   });
   const limit = pLimit(options.requestLimit);
