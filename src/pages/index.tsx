@@ -1,6 +1,7 @@
 import { IssueInstanceCache } from "@/issue/cache";
 import { IssueItem, getIssueStateWithIssue } from "@/issue/common";
 import styles from "@/styles/Home.module.css";
+import { AppContext } from "next/app";
 import { useMemo } from "react";
 
 interface HomeProps {
@@ -46,14 +47,16 @@ export default function Home(props: HomeProps) {
 }
 
 let issueCache: IssueInstanceCache | null;
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context: any) => {
   if (!issueCache) {
     issueCache = new IssueInstanceCache();
   }
-
+  const forceReloadToken = context.query.forceReloadToken;
   return {
     props: {
-      issueItems: await issueCache.getIssueList(),
+      issueItems: await issueCache.getIssueList({
+        forceReloadToken,
+      }),
     },
   };
 };

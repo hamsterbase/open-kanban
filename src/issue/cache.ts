@@ -8,11 +8,20 @@ import { getLinearIssues } from "./linear";
 export class IssueInstanceCache {
   private getIssueTask: Promise<IssueItem[]> | null = null;
 
-  async getIssueList(): Promise<IssueItem[]> {
+  async getIssueList(options: {
+    forceReloadToken: string;
+  }): Promise<IssueItem[]> {
     const {
       publicRuntimeConfig: { version },
     } = getConfig();
     const cacheFile = resolve(tmpdir(), `issues-cache-${version}.json`);
+    const shouldForceReload =
+      !!process.env.FORCE_RELOAD_TOKEN &&
+      options.forceReloadToken === process.env.FORCE_RELOAD_TOKEN;
+    if (shouldForceReload) {
+      console.log("Force reload");
+      await fs.unlink(cacheFile).catch(() => {});
+    }
     try {
       const cache = await fs.readFile(cacheFile, "utf-8");
       const { time, data } = JSON.parse(cache);
