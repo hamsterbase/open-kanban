@@ -18,6 +18,7 @@ export class IssueInstanceCache {
     const shouldForceReload =
       !!process.env.FORCE_RELOAD_TOKEN &&
       options.forceReloadToken === process.env.FORCE_RELOAD_TOKEN;
+    console.log("request forceReloadToken", options.forceReloadToken);
     if (shouldForceReload) {
       console.log("Force reload");
       await fs.unlink(cacheFile).catch(() => {});

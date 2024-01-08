@@ -48,7 +48,6 @@ async function getIssueItemFromLinearIssue(
 }
 
 export const getLinearIssues = async (options: GetLinerIssueOptions) => {
-  console.log(options);
   const sdk = new LinearClient({
     apiKey: options.apiKey,
   });
