@@ -18,7 +18,10 @@ export default function Home(props: HomeProps) {
         return (
           <div key={state.position} className={styles.column}>
             <div className={styles.stateTitle}>
-              {state.title} <span>{state.issues.length}</span>
+              {state.title}
+              <span className={styles.stateTitleCount}>
+                {state.issues.length}
+              </span>
             </div>
             <div className={styles.stateContent}>
               {state.issues.map((issue) => {

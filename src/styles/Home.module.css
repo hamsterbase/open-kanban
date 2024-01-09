@@ -3,12 +3,23 @@
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
-  padding: 80px;
+  padding: 40px;
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+  .content {
+    padding: 24px;
+    overflow-y: scroll;
+  }
+  .column {
+    flex-shrink: 0;
+    max-width: 80vw;
+  }
 }
 
 .column {
   width: 360px;
-  margin-right: 20px;
+  margin-right: 16px;
   height: 100%;
   box-sizing: border-box;
 }
@@ -17,6 +28,15 @@
   font-weight: 500;
   font-size: 20px;
 }
+
+.stateTitleCount {
+  color: gray;
+  font-size: 14px;
+  line-height: 20px;
+  display: inline-block;
+  margin-left: 8px;
+}
+
 .stateContent {
   height: 100%;
   overflow-y: scroll;
